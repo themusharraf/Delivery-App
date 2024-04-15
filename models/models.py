@@ -36,3 +36,4 @@ class Product(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String(100))
     price = Column(Integer)
+    orders = relationship('Order', back_populates='products')
