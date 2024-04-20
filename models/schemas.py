@@ -11,8 +11,8 @@ class SignUpModel(BaseModel):
     is_active: Optional[bool]
 
     class Config:
-        orm_mode = True
-        schema_extra = {
+        from_attributes = True
+        json_schema_extra = {
             "example": {
                 "username": "all_nc",
                 "email": "all_nc@gamil.com",

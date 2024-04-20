@@ -18,7 +18,7 @@ async def signup():
 
 
 @auth_router.post('/signup')
-async def signup(user: SignUpModel,status_code=status.HTTP_201_CREATED):
+async def signup(user: SignUpModel, status_code=status.HTTP_201_CREATED):
     db_email = Session.query(User).filter(User.email == user.email).first()
     if db_email is not None:
         return HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Users with this email already exist")
@@ -35,5 +35,19 @@ async def signup(user: SignUpModel,status_code=status.HTTP_201_CREATED):
                     )
     Session.add(new_user)
     Session.commit()
+    data = {
+        "id": new_user.id,
+        "username": new_user.username,
+        "email": new_user.email,
+        "is_active": new_user.is_active,
+        "is_staff": new_user
 
-    return new_user
+    }
+    response = {
+        "success": True,
+        "code": status.HTTP_201_CREATED,
+        "message": "User is created successfully",
+        "data": data
+    }
+
+    return response

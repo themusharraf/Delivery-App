@@ -22,7 +22,7 @@ class Order(Base):
         ('DELIVERED', 'delivered')
     )
     __tablename__ = 'orders'  # noqa
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     quantity = Column(Integer, nullable=False)
     order_status = Column(ChoiceType(choices=ORDER_STATUS_CHOICES), default="PENDING")
     user_id = Column(Integer, ForeignKey('users.id'))
