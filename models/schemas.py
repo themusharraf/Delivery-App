@@ -21,3 +21,10 @@ class SignUpModel(BaseModel):
                 "is_active": True
             }
         }
+
+class Settings(BaseModel):
+    auth_jwt_api_key: str = '5328ce17be29f78097b41251fe5e5ee697c0a2ec6cc789160f3cfe3db36e6c6e'
+# get secrets key in python console
+# import secrets
+#
+# secrets.token_hex()
