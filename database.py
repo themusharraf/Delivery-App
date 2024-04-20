@@ -5,4 +5,4 @@ DATABASE_URL = "postgresql://posttest:1@localhost/appdb"
 engine = create_engine(DATABASE_URL, echo=True)  # database log echo = True
 
 Base = declarative_base()
-Session = sessionmaker(bind=engine)
+session = sessionmaker(bind=engine)
